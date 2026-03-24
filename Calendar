@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>30-Day Lifestyle Content Calendar</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Epilogue:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #faf7f2;
+    --warm: #f2ece0;
+    --blush: #e8c4b8;
+    --rose: #c47a6a;
+    --terracotta: #a85b47;
+    --brown: #3d2218;
+    --muted: #8a7060;
+    --border: #ddd5c5;
+
+    --cam: #e8c4b8;
+    --cam-bg: rgba(196,122,106,0.08);
+    --broll: #b8d4c4;
+    --broll-bg: rgba(100,160,130,0.08);
+    --travel: #c4c8e8;
+    --travel-bg: rgba(100,110,180,0.08);
+    --beauty: #e8dcc4;
+    --beauty-bg: rgba(180,150,90,0.08);
+    --food: #c8e4c8;
+    --food-bg: rgba(90,160,90,0.08);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--cream);
+    color: var(--brown);
+    font-family: 'Epilogue', sans-serif;
+    min-height: 100vh;
+  }
+
+  /* HERO */
+  .hero {
+    background: var(--brown);
+    color: var(--cream);
+    padding: 56px 40px 48px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 320px; height: 320px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(232,196,184,0.12) 0%, transparent 70%);
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -40px; left: 30%;
+    width: 200px; height: 200px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(196,122,106,0.1) 0%, transparent 70%);
+  }
+
+  .hero-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--blush);
+    margin-bottom: 16px;
+    font-weight: 500;
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.2rem, 5vw, 3.6rem);
+    line-height: 1.15;
+    font-weight: 400;
+    margin-bottom: 24px;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--blush);
+  }
+
+  .hero-stats {
+    display: flex;
+    gap: 36px;
+    flex-wrap: wrap;
+  }
+
+  .stat {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.9rem;
+    color: var(--blush);
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-size: 11px;
+    color: rgba(250,247,242,0.5);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  /* LEGEND */
+  .legend {
+    background: var(--warm);
+    border-bottom: 1px solid var(--border);
+    padding: 16px 40px;
+  }
+
+  .legend-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .legend-label {
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-right: 4px;
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 12px;
+    color: var(--muted);
+    cursor: pointer;
+    padding: 4px 10px 4px 8px;
+    border-radius: 20px;
+    border: 1.5px solid transparent;
+    transition: all 0.2s;
+  }
+
+  .legend-item:hover, .legend-item.active {
+    background: white;
+    border-color: var(--border);
+    color: var(--brown);
+  }
+
+  .legend-dot {
+    width: 9px; height: 9px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* MAIN */
+  main {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 40px 40px 80px;
+  }
+
+  /* WEEK SECTIONS */
+  .week {
+    margin-bottom: 44px;
+  }
+
+  .week-header {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1.5px solid var(--border);
+  }
+
+  .week-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    font-weight: 400;
+  }
+
+  .week-theme {
+    font-size: 12px;
+    color: var(--muted);
+    font-style: italic;
+  }
+
+  .week-tip {
+    margin-left: auto;
+    font-size: 11px;
+    color: var(--rose);
+    font-weight: 500;
+    background: rgba(196,122,106,0.08);
+    padding: 4px 12px;
+    border-radius: 20px;
+  }
+
+  /* DAY GRID */
+  .days-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 10px;
+  }
+
+  .day-card {
+    background: white;
+    border: 1.5px solid var(--border);
+    border-radius: 12px;
+    padding: 14px 12px;
+    cursor: pointer;
+    transition: all 0.2s;
+    position: relative;
+  }
+
+  .day-card:hover {
+    border-color: var(--rose);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(61,34,24,0.08);
+  }
+
+  .day-card.selected {
+    border-color: var(--terracotta);
+    box-shadow: 0 0 0 3px rgba(168,91,71,0.12);
+  }
+
+  .day-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    line-height: 1;
+    color: var(--muted);
+    margin-bottom: 6px;
+  }
+
+  .day-weekday {
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--border);
+    margin-bottom: 10px;
+  }
+
+  .day-type {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 9.5px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 3px 7px;
+    border-radius: 4px;
+    margin-bottom: 8px;
+  }
+
+  .day-title {
+    font-size: 11.5px;
+    font-weight: 500;
+    color: var(--brown);
+    line-height: 1.45;
+  }
+
+  /* TYPE COLORS */
+  .type-cam { background: var(--cam-bg); color: var(--terracotta); }
+  .type-broll { background: var(--broll-bg); color: #4a9070; }
+  .type-travel { background: var(--travel-bg); color: #5560b0; }
+  .type-beauty { background: var(--beauty-bg); color: #907040; }
+  .type-food { background: var(--food-bg); color: #407040; }
+
+  .border-cam { border-top: 3px solid var(--rose); }
+  .border-broll { border-top: 3px solid #6daa8e; }
+  .border-travel { border-top: 3px solid #7880c8; }
+  .border-beauty { border-top: 3px solid #b89050; }
+  .border-food { border-top: 3px solid #60a060; }
+
+  /* DETAIL PANEL */
+  .detail-panel {
+    display: none;
+    background: white;
+    border: 1.5px solid var(--border);
+    border-radius: 16px;
+    padding: 28px;
+    margin-top: 16px;
+    animation: slideDown 0.2s ease;
+  }
+
+  .detail-panel.visible {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 28px;
+  }
+
+  @keyframes slideDown {
+    from { opacity: 0; transform: translateY(-8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .detail-section h4 {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 10px;
+    font-weight: 500;
+  }
+
+  .detail-section p, .detail-section li {
+    font-size: 12.5px;
+    color: var(--brown);
+    line-height: 1.7;
+  }
+
+  .detail-section ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .detail-section ul li {
+    padding: 5px 0;
+    border-bottom: 1px solid var(--warm);
+    display: flex;
+    gap: 8px;
+  }
+
+  .detail-section ul li:last-child { border-bottom: none; }
+
+  .detail-section ul li::before {
+    content: '—';
+    color: var(--blush);
+    flex-shrink: 0;
+  }
+
+  .hook-box {
+    background: var(--warm);
+    border-left: 3px solid var(--rose);
+    border-radius: 0 8px 8px 0;
+    padding: 12px 14px;
+    font-size: 12.5px;
+    font-style: italic;
+    color: var(--brown);
+    line-height: 1.6;
+  }
+
+  .detail-close {
+    position: absolute;
+    top: 12px; right: 12px;
+    background: none;
+    border: none;
+    color: var(--muted);
+    font-size: 18px;
+    cursor: pointer;
+    width: 28px; height: 28px;
+    display: flex; align-items: center; justify-content: center;
+    border-radius: 50%;
+  }
+
+  .detail-close:hover { background: var(--warm); }
+
+  /* BATCH BANNER */
+  .batch-banner {
+    background: var(--brown);
+    color: var(--cream);
+    border-radius: 14px;
+    padding: 20px 24px;
+    margin-bottom: 40px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .batch-banner h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 400;
+    margin-bottom: 4px;
+  }
+
+  .batch-banner p {
+    font-size: 12px;
+    color: rgba(250,247,242,0.6);
+    line-height: 1.5;
+  }
+
+  .batch-items {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-left: auto;
+  }
+
+  .batch-item {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 8px;
+    padding: 8px 14px;
+    font-size: 11px;
+    color: var(--blush);
+    text-align: center;
+    line-height: 1.4;
+  }
+
+  .batch-item strong {
+    display: block;
+    color: var(--cream);
+    font-size: 12px;
+  }
+
+  /* FILTER ACTIVE */
+  .day-card.filtered-out {
+    opacity: 0.2;
+    pointer-events: none;
+  }
+
+  @media (max-width: 900px) {
+    .hero, main, .legend { padding-left: 20px; padding-right: 20px; }
+    .days-grid { grid-template-columns: repeat(4, 1fr); }
+    .detail-panel.visible { grid-template-columns: 1fr 1fr; }
+  }
+
+  @media (max-width: 600px) {
+    .days-grid { grid-template-columns: repeat(3, 1fr); }
+    .detail-panel.visible { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Lifestyle Account · TikTok & Instagram Reels</div>
+    <h1>30 Days of Content,<br><em>Already Done.</em></h1>
+    <div class="hero-stats">
+      <div class="stat"><span class="stat-num">30</span><span class="stat-label">Videos</span></div>
+      <div class="stat"><span class="stat-num">2</span><span class="stat-label">Platforms</span></div>
+      <div class="stat"><span class="stat-num">5</span><span class="stat-label">Content Pillars</span></div>
+      <div class="stat"><span class="stat-num">~25min</span><span class="stat-label">Edit Per Video</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="legend">
+  <div class="legend-inner">
+    <span class="legend-label">Filter:</span>
+    <div class="legend-item active" data-type="all" onclick="filterType('all', this)">
+      <div class="legend-dot" style="background:var(--muted)"></div> All
+    </div>
+    <div class="legend-item" data-type="cam" onclick="filterType('cam', this)">
+      <div class="legend-dot" style="background:var(--rose)"></div> Talking to Camera
+    </div>
+    <div class="legend-item" data-type="broll" onclick="filterType('broll', this)">
+      <div class="legend-dot" style="background:#6daa8e"></div> B-Roll + Voiceover
+    </div>
+    <div class="legend-item" data-type="travel" onclick="filterType('travel', this)">
+      <div class="legend-dot" style="background:#7880c8"></div> Travel / Emirates / Disney
+    </div>
+    <div class="legend-item" data-type="beauty" onclick="filterType('beauty', this)">
+      <div class="legend-dot" style="background:#b89050"></div> Beauty / Hair
+    </div>
+    <div class="legend-item" data-type="food" onclick="filterType('food', this)">
+      <div class="legend-dot" style="background:#60a060"></div> Food / Lifestyle
+    </div>
+  </div>
+</div>
+
+<main>
+
+  <div class="batch-banner">
+    <div>
+      <h3>Batch Filming Strategy for Daily Posting</h3>
+      <p>Film 3–4 videos per session twice a week. You're a fast editor — this covers the whole month.</p>
+    </div>
+    <div class="batch-items">
+      <div class="batch-item"><strong>Tue</strong>2–3 cam<br>videos</div>
+      <div class="batch-item"><strong>Thu</strong>2 b-roll<br>videos</div>
+      <div class="batch-item"><strong>Sat</strong>1 beauty<br>or food</div>
+      <div class="batch-item"><strong>Buffer</strong>Always 3<br>days ahead</div>
+    </div>
+  </div>
+
+  <div id="calendar"></div>
+
+</main>
+
+<script>
+const DAYS = ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
+
+const videos = [
+  // WEEK 1 — Introduce yourself & hook new followers
+  { day:1, type:'cam', title:'What I did at Emirates that I could never talk about (story time)', hook:'"I signed an NDA but this one technically isn\'t covered..."', shots:['Face close-up, dramatic lighting','Reaction cuts','Text overlay with redacted info effect'], caption:'This one still makes me cringe 😭 #emirates #flightattendant #storytime', theme:'Week 1: Introduce Yourself' },
+  { day:2, type:'broll', title:'A day in my life — design student, ex flight attendant, content creator', hook:'"My life makes zero sense and I love it"', shots:['Morning coffee close-up','Laptop with Figma open','Walking outside, aesthetic shots','Evening wind-down flat lay'], caption:'Yes all of this is the same person 🫠 #dayinmylife #designstudent', theme:'Week 1: Introduce Yourself' },
+  { day:3, type:'beauty', title:'My 10-minute everyday makeup routine (honest, no filter)', hook:'"I spent years doing makeup for Emirates. Here\'s what I actually use daily."', shots:['Bare face to camera','Each product close-up','Side by side before/after','Natural light finish shot'], caption:'The most asked question, finally answered 💄 #makeuproutine #everydaymakeup', theme:'Week 1: Introduce Yourself' },
+  { day:4, type:'travel', title:'The type of passenger that makes every flight attendant\'s shift horrible', hook:'"There are 6 types. You\'ve definitely been one."', shots:['Talking head, slightly intense energy','Text list appearing on screen','Reaction faces for each type'], caption:'Which one are you being honest 😭✈️ #flightattendant #emirates #travel', theme:'Week 1: Introduce Yourself' },
+  { day:5, type:'food', title:'What I eat when I\'m trying to lose weight but refuse to be miserable', hook:'"Sad girl salads are not the answer. Here\'s what I actually eat."', shots:['Fridge open shot','Meal prep close-ups','Each meal aesthetic flat lay','Satisfied reaction on camera'], caption:'Eating well doesn\'t have to be sad 🥗 #whatieatinaday #weightloss #healthyeating', theme:'Week 1: Introduce Yourself' },
+  { day:6, type:'cam', title:'Unpopular opinion: working at Disney World is not what you think', hook:'"Everyone asks if it\'s magical. Let me be real."', shots:['Talking head, honest expression','Behind the scenes b-roll of parks if available','Text overlays with facts'], caption:'The truth nobody tells you 🏰 #disneyworld #disneyemployee #behindthescenes', theme:'Week 1: Introduce Yourself' },
+  { day:7, type:'broll', title:'My morning routine when I actually have time (realistic)', hook:'"Not a 5am girlboss morning. A real one."', shots:['Slow morning footage','Coffee ritual close-up','Journaling or phone scrolling','Getting ready final look'], caption:'Realistic mornings are valid 🌅 #morningroutine #slowmorning', theme:'Week 1: Introduce Yourself' },
+
+  // WEEK 2 — Travel & Emirates storytelling
+  { day:8, type:'travel', title:'The worst destination I ever flew to as a flight attendant (and why)', hook:'"I know I\'m going to get hate for this but..."', shots:['Map b-roll or destination image','Talking head','Dramatic pause cut','Disclaimer text overlay'], caption:'Don\'t come for me 😅✈️ #worstdestination #flightattendant #travelstories', theme:'Week 2: Travel & Story Time' },
+  { day:9, type:'broll', title:'Packing a carry-on for 2 weeks — flight attendant method', hook:'"I packed for 14 days in one bag and I\'ll teach you."', shots:['Empty bag flat lay','Each item fold technique close-up','Bag getting packed in stages','Final zipped bag reveal'], caption:'Never check a bag again ✈️🧳 #packingtips #travelpack #carryon', theme:'Week 2: Travel & Story Time' },
+  { day:10, type:'cam', title:'The flight that actually scared me (story time)', hook:'"I\'ve done 1000+ flights. This is the only one where I was genuinely scared."', shots:['Dark, serious talking head energy','Hands gesturing close-up','Reaction face cuts','End reveal text overlay'], caption:'I\'ve never told this one before 😶 #flightattendant #turbulence #storytime', theme:'Week 2: Travel & Story Time' },
+  { day:11, type:'travel', title:'Best destinations in the world ranked — from someone who\'s actually been', hook:'"I\'ve been to 40+ countries. Here\'s the honest list."', shots:['Slow b-roll of travel photos on phone','Talking head with energy','Text ranking appearing on screen'], caption:'Save this for your next trip 🌍 #bestdestinations #travel #travelguide', theme:'Week 2: Travel & Story Time' },
+  { day:12, type:'beauty', title:'How I kept my hair healthy flying 5 days a week (dry air, humidity changes)', hook:'"Airplane air is destroying your hair. Here\'s how I survived 2 years."', shots:['Hair product flat lay','Before (dry/damaged) vs after demo','Application technique close-ups'], caption:'Flight attendant hair secrets 💇‍♀️✈️ #hairtips #haircare #travelbeauty', theme:'Week 2: Travel & Story Time' },
+  { day:13, type:'cam', title:'Things I miss about being a flight attendant', hook:'"I left Emirates. And honestly? I miss these 5 things."', shots:['Nostalgic talking head tone','Photo/video scrolling b-roll','Wistful end look to camera'], caption:'Nothing is perfect but some things were ✨ #emirates #flightattendant #nostalgia', theme:'Week 2: Travel & Story Time' },
+  { day:14, type:'broll', title:'My travel skincare routine — what I use on long-haul flights', hook:'"Your skin after a 14-hour flight doesn\'t have to look like that."', shots:['Product lineup flat lay','In-flight simulation (sitting, applying)','Before and after glow skin close-up'], caption:'Steal this routine ✨ #travelskincare #flightattendant #skincareroutine', theme:'Week 2: Travel & Story Time' },
+
+  // WEEK 3 — Lifestyle & Relatable
+  { day:15, type:'food', title:'My realistic what I eat in a day (weight loss, no restriction)', hook:'"I eat a lot. I\'m also losing weight. Let me show you."', shots:['Breakfast close-up','Lunch prep','Snack flat lay','Dinner plated shot'], caption:'Balance is real 🍽️ #whatieatinaday #realisticweightloss #norestriction', theme:'Week 3: Relatable Lifestyle' },
+  { day:16, type:'cam', title:'Things nobody tells you about being a flight attendant', hook:'"The salary is not what you think. Neither is the glamour."', shots:['Straight to camera, matter-of-fact energy','Quick cut list of truths','End with humour'], caption:'The industry kept this quiet 😬 #flightattendant #emirates #careeradvice', theme:'Week 3: Relatable Lifestyle' },
+  { day:17, type:'beauty', title:'Shopping finds that actually changed my life this month', hook:'"I bought 4 things this month. All of them earned it."', shots:['Unboxing / haul style flat lay','Each product demo close-up','Reaction shots'], caption:'Your wallet will hate me 😭🛍️ #shoppingfinds #monthlyfinds #amazonfinds', theme:'Week 3: Relatable Lifestyle' },
+  { day:18, type:'broll', title:'A slow aesthetic Sunday — how I reset for the week', hook:'"What I do when I have no plans and all the time"', shots:['Morning light bedroom shot','Slow pour coffee close-up','Journaling or book pages','Cozy outfit lay flat'], caption:'Protect your Sundays 🤍 #sundayreset #selfcare #slowliving', theme:'Week 3: Relatable Lifestyle' },
+  { day:19, type:'travel', title:'Tips I wish I knew before flying for the first time', hook:'"As a flight attendant, I saw the same mistakes every single day."', shots:['Talking head with list energy','Text overlays per tip','Short demo clips'], caption:'Save this before your next flight ✈️ #traveltips #firsttimeflyingtips', theme:'Week 3: Relatable Lifestyle' },
+  { day:20, type:'cam', title:'My honest experience losing weight — what\'s working, what isn\'t', hook:'"I\'m going to be honest in a way most people aren\'t."', shots:['Vulnerable talking head, good light','Before/current side-by-side if comfortable','End with energy'], caption:'Real talk only 💬 #weightlossjourney #honestweightloss #bodypositive', theme:'Week 3: Relatable Lifestyle' },
+  { day:21, type:'broll', title:'My current skincare routine — morning and night (flat lay style)', hook:'"Skin that looks like this doesn\'t happen by accident."', shots:['Full product flat lay','Morning routine sequence','Night routine sequence close-ups','Glowing skin final close-up'], caption:'This took me 3 years to figure out 🧴 #skincareroutine #glowingskin', theme:'Week 3: Relatable Lifestyle' },
+
+  // WEEK 4 — Deep dive & community
+  { day:22, type:'cam', title:'My biggest regret from working at Emirates (honest)', hook:'"If I could go back, I would have done this differently."', shots:['Quiet, direct talking head','Slow delivery, emotional weight','End with lesson learned'], caption:'Sharing this so you don\'t make the same mistake 💛 #emirates #careerregrets', theme:'Week 4: Go Deeper' },
+  { day:23, type:'broll', title:'My productive work from home setup — design student edition', hook:'"I designed my desk for maximum focus and zero boredom."', shots:['Full desk reveal slow pan','Close-up of each item','Laptop screen with work','Working in motion b-roll'], caption:'This desk did not happen overnight 🖥️ #desksetup #workfromhome #designstudent', theme:'Week 4: Go Deeper' },
+  { day:24, type:'travel', title:'Disney World vs Disneyland — which is actually better (employee POV)', hook:'"I\'ve worked at one and visited the other. Here\'s the real answer."', shots:['Talking head, game show energy','Text comparison overlays','Decisive final answer moment'], caption:'The debate ends here 🏰 #disney #disneyworld #disneyland', theme:'Week 4: Go Deeper' },
+  { day:25, type:'food', title:'Easy meals I make when I have zero time but don\'t want to eat badly', hook:'"30 minutes or less. Every single one. Here are my 5 go-tos."', shots:['Fridge and pantry b-roll','Quick assembly close-ups per meal','Final plated shots'], caption:'Lazy girl meals but make it healthy 🍳 #easymealideas #quickmeals #mealprep', theme:'Week 4: Go Deeper' },
+  { day:26, type:'cam', title:'Answering your most asked questions (Q&A — reader questions)', hook:'"You asked 47 questions. I\'m answering the most interesting ones."', shots:['Energetic talking head','Text of each question appearing on screen','Reaction + answer per question'], caption:'Drop more questions below 👇 #qanda #gettoknowme', theme:'Week 4: Go Deeper' },
+  { day:27, type:'beauty', title:'Full glam makeup look from scratch — with drugstore products', hook:'"You don\'t need expensive makeup. You need the right technique."', shots:['Bare face start','Step by step application','Product close-ups','Finished glam reveal'], caption:'Full glam, half the price 💄 #makeuptutorial #drugstorebeauty #fullglam', theme:'Week 4: Go Deeper' },
+  { day:28, type:'broll', title:'How I stay consistent with healthy eating while traveling', hook:'"I used to eat airport food every day. Here\'s what changed."', shots:['Airport b-roll style shots','Healthy food options close-up','Hotel room food prep','Grocery store b-roll'], caption:'Travel doesn\'t have to derail you 🌍🥗 #travelhealth #healthytravel', theme:'Week 4: Go Deeper' },
+
+  // WEEK 5 — Polish & build community
+  { day:29, type:'cam', title:'Things I\'d tell my 21-year-old self before joining Emirates', hook:'"I was 21, no plan, just a dream. This is what I wish I knew."', shots:['Warm, reflective talking head','Text overlays per lesson','Hopeful final note'], caption:'For everyone figuring it out 🌱 #careeradvice #emirates #lifeadvice', theme:'Week 5: Community & Value' },
+  { day:30, type:'broll', title:'My 30-day content creation journey — what I learned', hook:'"I posted every day for 30 days. Here\'s the honest debrief."', shots:['Compilation of content creation b-roll','Filming setup shots','Numbers/stats on phone screen','Looking-ahead ending shot'], caption:'Month one: done. Here\'s what actually happened 📊 #contentcreator #30daychallenge', theme:'Week 5: Community & Value' },
+];
+
+const weekThemes = [
+  { label: 'Week 1', name: 'Introduce Yourself', days: [1,7], tip: '🎯 Hook new followers' },
+  { label: 'Week 2', name: 'Travel & Story Time', days: [8,14], tip: '✈️ Your Emirates era' },
+  { label: 'Week 3', name: 'Relatable Lifestyle', days: [15,21], tip: '💬 Build connection' },
+  { label: 'Week 4', name: 'Go Deeper', days: [22,28], tip: '🔍 Earn trust' },
+  { label: 'Week 5', name: 'Community & Value', days: [29,30], tip: '🌱 Build loyalty' },
+];
+
+const typeConfig = {
+  cam: { label: 'Cam', class: 'type-cam', border: 'border-cam', dot: 'var(--rose)' },
+  broll: { label: 'B-Roll', class: 'type-broll', border: 'border-broll', dot: '#6daa8e' },
+  travel: { label: 'Travel', class: 'type-travel', border: 'border-travel', dot: '#7880c8' },
+  beauty: { label: 'Beauty', class: 'type-beauty', border: 'border-beauty', dot: '#b89050' },
+  food: { label: 'Food', class: 'type-food', border: 'border-food', dot: '#60a060' },
+};
+
+let selectedDay = null;
+let activeFilter = 'all';
+
+function buildCalendar() {
+  const cal = document.getElementById('calendar');
+  
+  weekThemes.forEach(week => {
+    const weekVideos = videos.filter(v => v.day >= week.days[0] && v.day <= week.days[1]);
+    
+    const section = document.createElement('div');
+    section.className = 'week';
+    section.innerHTML = `
+      <div class="week-header">
+        <span class="week-title">${week.label} — <em style="font-style:italic;font-family:'Playfair Display',serif;font-weight:400">${week.name}</em></span>
+        <span class="week-tip">${week.tip}</span>
+      </div>
+    `;
+
+    const grid = document.createElement('div');
+    grid.className = 'days-grid';
+
+    weekVideos.forEach(v => {
+      const tc = typeConfig[v.type];
+      const dayOfWeek = DAYS[(v.day - 1) % 7];
+      const card = document.createElement('div');
+      card.className = `day-card ${tc.border}`;
+      card.dataset.day = v.day;
+      card.dataset.type = v.type;
+      card.innerHTML = `
+        <div class="day-num">${v.day}</div>
+        <div class="day-weekday">${dayOfWeek}</div>
+        <div class="day-type ${tc.class}">${tc.label}</div>
+        <div class="day-title">${v.title}</div>
+      `;
+      card.onclick = () => toggleDetail(v, section, card);
+      grid.appendChild(card);
+    });
+
+    section.appendChild(grid);
+
+    // Detail panel placeholder
+    const panel = document.createElement('div');
+    panel.className = 'detail-panel';
+    panel.id = `panel-week-${week.days[0]}`;
+    section.appendChild(panel);
+
+    cal.appendChild(section);
+  });
+}
+
+function toggleDetail(v, section, card) {
+  const panel = section.querySelector('.detail-panel');
+  const allCards = document.querySelectorAll('.day-card');
+
+  if (selectedDay === v.day) {
+    panel.classList.remove('visible');
+    panel.innerHTML = '';
+    card.classList.remove('selected');
+    selectedDay = null;
+    return;
+  }
+
+  // Close all panels
+  document.querySelectorAll('.detail-panel').forEach(p => {
+    p.classList.remove('visible');
+    p.innerHTML = '';
+  });
+  allCards.forEach(c => c.classList.remove('selected'));
+
+  selectedDay = v.day;
+  card.classList.add('selected');
+
+  const tc = typeConfig[v.type];
+  panel.innerHTML = `
+    <div class="detail-section" style="position:relative">
+      <h4>Hook (first 3 seconds)</h4>
+      <div class="hook-box">${v.hook}</div>
+      <br>
+      <h4>Caption</h4>
+      <p style="font-size:12px;color:var(--muted);line-height:1.6">${v.caption}</p>
+    </div>
+    <div class="detail-section">
+      <h4>Shot List</h4>
+      <ul>${v.shots.map(s => `<li>${s}</li>`).join('')}</ul>
+    </div>
+    <div class="detail-section">
+      <h4>Format</h4>
+      <p style="margin-bottom:12px"><span class="day-type ${tc.class}" style="margin:0">${tc.label === 'Cam' ? 'Talking to Camera' : tc.label === 'B-Roll' ? 'B-Roll + Voiceover' : tc.label + ' Content'}</span></p>
+      <h4 style="margin-top:16px">Claude Prompt</h4>
+      <div class="hook-box" style="font-style:normal;font-size:11.5px">Write a 45-sec TikTok script for my lifestyle account. Topic: "${v.title}". Tone: honest, fun, relatable. Include hook, 3 body points, CTA. I talk to camera and do b-roll voiceover.</div>
+    </div>
+  `;
+  panel.classList.add('visible');
+  panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+function filterType(type, el) {
+  activeFilter = type;
+  document.querySelectorAll('.legend-item').forEach(l => l.classList.remove('active'));
+  el.classList.add('active');
+
+  document.querySelectorAll('.day-card').forEach(card => {
+    if (type === 'all' || card.dataset.type === type) {
+      card.classList.remove('filtered-out');
+    } else {
+      card.classList.add('filtered-out');
+    }
+  });
+}
+
+buildCalendar();
+</script>
+</body>
+</html>
